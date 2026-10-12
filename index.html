@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>医療経営士2級 毎朝7時デイリーマスター</title>
+
+  <!-- Safari & iOS Web App Icons / Settings -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="医療経営士2級">
+  <meta name="theme-color" content="#059669">
+  <link id="appleTouchIcon" rel="apple-touch-icon" sizes="180x180" href="">
+  <link id="faviconTag" rel="icon" type="image/svg+xml" href="">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -644,6 +653,76 @@
 
     let activeModalQuestionId = null;
 
+    // Safari / iOSホーム画面 & ファビコン用の高品質ベクターアイコンを動的生成
+    function setupSafariAppIcons() {
+      // 1. SVGベクターアイコンのData URI（タブ・モダンブラウザ用）
+      const svgIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+          <defs>
+            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#059669" />
+              <stop offset="50%" stop-color="#047857" />
+              <stop offset="100%" stop-color="#064e3b" />
+            </linearGradient>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fef08a" />
+              <stop offset="100%" stop-color="#f59e0b" />
+            </linearGradient>
+            <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.25" />
+            </filter>
+          </defs>
+          <!-- 背景ベース -->
+          <rect width="180" height="180" rx="38" fill="url(#bgGrad)" />
+          
+          <!-- ホワイトカルテ／シールドベース -->
+          <rect x="42" y="36" width="96" height="110" rx="18" fill="#ffffff" filter="url(#shadow)" />
+          
+          <!-- カルテ上部クリップ -->
+          <rect x="68" y="28" width="44" height="16" rx="8" fill="#10b981" />
+          
+          <!-- 医療の十字シンボル (エメラルド) -->
+          <path d="M90 60 v40 M70 80 h40" stroke="#059669" stroke-width="12" stroke-linecap="round" />
+          
+          <!-- 経営・知性の星（ゴールドスター） -->
+          <polygon points="120,44 124,53 134,54 126,61 129,71 120,65 111,71 114,61 106,54 116,53" fill="url(#goldGrad)" filter="url(#shadow)" />
+          
+          <!-- 下部のライン演出 -->
+          <rect x="58" y="116" width="64" height="5" rx="2.5" fill="#cbd5e1" />
+          <rect x="58" y="126" width="40" height="5" rx="2.5" fill="#cbd5e1" />
+        </svg>
+      `.trim();
+
+      const svgDataUrl = `data:image/svg+xml;utf8,${encodeURIComponent(svgIcon)}`;
+      const faviconTag = document.getElementById('faviconTag');
+      if (faviconTag) {
+        faviconTag.href = svgDataUrl;
+      }
+
+      // 2. iOS Safari「ホーム画面に追加」用の高解像度PNGをCanvas経由で即時レンダリング
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 180;
+        canvas.height = 180;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0);
+          const pngDataUrl = canvas.toDataURL('image/png');
+          const appleTouchIconTag = document.getElementById('appleTouchIcon');
+          if (appleTouchIconTag) {
+            appleTouchIconTag.href = pngDataUrl;
+          }
+        };
+        img.src = svgDataUrl;
+      } catch (e) {
+        const appleTouchIconTag = document.getElementById('appleTouchIcon');
+        if (appleTouchIconTag) {
+          appleTouchIconTag.href = svgDataUrl;
+        }
+      }
+    }
+
     function copyTextToClipboard(text) {
       const textArea = document.createElement("textarea");
       textArea.value = text;
@@ -1101,6 +1180,7 @@
     });
 
     window.onload = function() {
+      setupSafariAppIcons();
       renderAll();
     };
   </script>
