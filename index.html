@@ -264,39 +264,46 @@
         </div>
 
         <div id="aiDeepDiveContainer" class="border-t border-slate-100 pt-4">
-          <button id="runGeminiAiAnalysisBtn" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-bold text-sm sm:text-base shadow-md shadow-emerald-200 flex items-center justify-center gap-2 transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button id="runGeminiAiAnalysisBtn" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm sm:text-base shadow-sm hover:shadow-md flex items-center justify-center gap-2 transition active:scale-[0.99]">
+            <svg class="w-5 h-5 text-emerald-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span>Gemini AIにこの論点の2級頻出ひっかけポイントを質問</span>
+            <span class="tracking-wide">AIにこの論点の頻出ひっかけポイントを質問</span>
           </button>
           <div id="aiResponseBox" class="mt-3 p-4 bg-teal-50 border border-teal-200 rounded-xl text-sm text-teal-950 hidden leading-relaxed whitespace-pre-line">
           </div>
         </div>
       </div>
 
-      <div class="px-6 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-        <button id="modalStarToggleBtn" class="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border transition">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-          </svg>
-          <span>スターをつける</span>
-        </button>
-        <div class="flex items-center gap-2">
-          <button id="modalCopyBtn" class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition" title="本文をコピー">
-            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="px-5 py-4 bg-slate-50/90 border-t border-slate-200 flex flex-col gap-2.5">
+        <!-- 上段：最重要アクション（スター ＆ 既読） -->
+        <div class="grid grid-cols-2 gap-2.5">
+          <button id="modalStarToggleBtn" class="h-11 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center text-center gap-2 border transition-all active:scale-[0.98] shadow-2xs">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+            <span class="truncate">スターをつける</span>
+          </button>
+
+          <button id="modalReadToggleBtn" class="h-11 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center text-center gap-2 border transition-all active:scale-[0.98] shadow-2xs">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="truncate">既読にする</span>
+          </button>
+        </div>
+
+        <!-- 下段：サポートアクション（コピー ＆ 閉じる） -->
+        <div class="grid grid-cols-2 gap-2.5">
+          <button id="modalCopyBtn" class="h-10 px-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center text-center gap-1.5 border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-[0.98]" title="本文をコピー">
+            <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
             <span>本文コピー</span>
           </button>
-          <button id="modalReadToggleBtn" class="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span>既読にする</span>
-          </button>
-          <button id="closeModalBottomBtn" class="text-xs px-4 py-2 bg-slate-200 hover:bg-slate-300 font-semibold text-slate-700 rounded-lg transition">
-            閉じる
+
+          <button id="closeModalBottomBtn" class="h-10 px-3 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center text-center gap-1.5 border border-slate-200 bg-slate-200/80 hover:bg-slate-300 text-slate-700 transition-all active:scale-[0.98]">
+            <span>閉じる</span>
           </button>
         </div>
       </div>
@@ -1011,20 +1018,20 @@
     function updateModalStarButton() {
       const isStarred = app.state.starredIds.has(activeModalQuestionId);
       if (isStarred) {
-        modalStarToggleBtn.className = "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-50 text-amber-800";
+        modalStarToggleBtn.className = "h-11 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center text-center gap-2 border border-amber-300 bg-amber-50 text-amber-800 shadow-2xs hover:bg-amber-100 transition-all active:scale-[0.98]";
         modalStarToggleBtn.innerHTML = `
-          <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.364 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          <svg class="w-4 h-4 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
-          <span>★ スター保持中 (クリックで解除)</span>
+          <span class="truncate">★ スター保持中</span>
         `;
       } else {
-        modalStarToggleBtn.className = "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-50";
+        modalStarToggleBtn.className = "h-11 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center text-center gap-2 border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 shadow-2xs transition-all active:scale-[0.98]";
         modalStarToggleBtn.innerHTML = `
-          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
           </svg>
-          <span>★ スターをつける</span>
+          <span class="truncate">★ スターをつける</span>
         `;
       }
     }
@@ -1032,20 +1039,20 @@
     function updateModalReadButton() {
       const isRead = app.state.readIds.has(activeModalQuestionId);
       if (isRead) {
-        modalReadToggleBtn.className = "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-teal-300 bg-teal-50 text-teal-800";
+        modalReadToggleBtn.className = "h-11 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center text-center gap-2 border border-teal-300 bg-teal-50 text-teal-800 shadow-2xs hover:bg-teal-100 transition-all active:scale-[0.98]";
         modalReadToggleBtn.innerHTML = `
-          <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-teal-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
           </svg>
-          <span>既読（未読に戻す）</span>
+          <span class="truncate">既読（未読に戻す）</span>
         `;
       } else {
-        modalReadToggleBtn.className = "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-50";
+        modalReadToggleBtn.className = "h-11 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center text-center gap-2 border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 shadow-2xs transition-all active:scale-[0.98]";
         modalReadToggleBtn.innerHTML = `
-          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
           </svg>
-          <span>既読にする</span>
+          <span class="truncate">既読にする</span>
         `;
       }
     }
@@ -1087,18 +1094,21 @@
 
       runGeminiAiAnalysisBtn.disabled = true;
       runGeminiAiAnalysisBtn.innerHTML = `
-        <svg class="w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 animate-spin text-white shrink-0" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
         </svg>
-        <span>AIが医療経営士2級の出題傾向を分析中...</span>
+        <span>AIが医療経営士2級の試験傾向を分析中...</span>
       `;
 
       aiResponseBox.classList.remove('hidden');
-      aiResponseBox.textContent = '思考中... 医療経営士2級における頻出論点と誤答パターンを照会しています。';
+      aiResponseBox.textContent = '思考中... 医療経営士2級の過去問傾向と頻出ひっかけパターンを整理しています。';
+
+      // 専門家による頻出トラップ（オフライン・Safari単体でも100%即座に学習可能）
+      const baseTrapAnalysis = q.examTrap || `【医療経営士2級 合格キーポイント】\n・論点: ${q.title}\n・重要判定基準: ${q.keyPoint}\n・本試験では用語の定義（法的な境界線や数値基準）のすり替えが多いため、制度趣旨と連動して暗記してください。`;
 
       try {
-        const apiKey = ""; // Canvas runtime provides the key
+        const apiKey = "";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
         const systemPrompt = "あなたは医療経営士2級の試験指導専門家です。提示された論点について、実際の検定試験で出題されやすい『ひっかけ選択肢のパターン』『実務上の注意点』『暗記しておくべき数値・キーワード』を箇条書きで簡潔明瞭（300文字程度）に解説してください。";
@@ -1115,23 +1125,44 @@
           body: JSON.stringify(payload)
         });
 
-        const data = await res.json();
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-        if (text) {
-          aiResponseBox.textContent = text;
-        } else {
-          aiResponseBox.textContent = 'AI解説の取得に失敗しました。時間をおいて再試行してください。';
+        if (res.ok) {
+          const data = await res.json();
+          const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (text) {
+            aiResponseBox.innerHTML = `
+              <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                Gemini AI 試験分析レポート
+              </div>
+              <div class="text-slate-800">${text}</div>
+            `;
+            return;
+          }
         }
+        // レスポンスが不通・外部Safariでキー未設定等の場合、確実に役立つ内蔵の2級頻出トラップ解説を美麗表示
+        aiResponseBox.innerHTML = `
+          <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+            医療経営士2級 頻出トラップ＆盲点解説
+          </div>
+          <div class="text-slate-800">${baseTrapAnalysis}</div>
+        `;
       } catch (err) {
-        aiResponseBox.textContent = '通信エラーが発生しました。インターネット接続環境をご確認ください。';
+        // 通信遮断や外部環境でも学習が止まらないようフォールバック
+        aiResponseBox.innerHTML = `
+          <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+            医療経営士2級 頻出トラップ＆盲点解説
+          </div>
+          <div class="text-slate-800">${baseTrapAnalysis}</div>
+        `;
       } finally {
         runGeminiAiAnalysisBtn.disabled = false;
         runGeminiAiAnalysisBtn.innerHTML = `
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
-          <span>再分析・追加質問</span>
+          <span>解説を再読み込み</span>
         `;
       }
     });
