@@ -130,7 +130,7 @@
       </div>
     </div>
 
-    <!-- Navigation Tabs (Mobile-first, no ugly line wraps) -->
+    <!-- Navigation Tabs -->
     <div class="border-b border-slate-200 pb-1">
       <div class="flex items-center justify-between gap-2">
         <nav class="flex space-x-1.5 sm:space-x-3 overflow-x-auto py-1 custom-scrollbar w-full sm:w-auto">
@@ -168,7 +168,7 @@
       </div>
     </div>
 
-    <!-- Daily View Section with Clean Subheader -->
+    <!-- Daily View Section -->
     <section id="dailyView" class="space-y-4">
       <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-2.5">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -177,7 +177,7 @@
             本日の重点課題（5問）
           </h2>
           <span id="dailyDateDisplay" class="inline-flex items-center text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-lg w-fit">
-            2026/10/12 朝7:00 付出題
+            本日の出題
           </span>
         </div>
         <p class="text-xs sm:text-sm text-slate-600 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-start sm:items-center gap-2">
@@ -192,34 +192,32 @@
       </div>
     </section>
 
+    <!-- Starred View Section -->
     <section id="starredView" class="hidden space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
-            <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            スター付き復習帳（保持中論点）
-          </h2>
-          <p class="text-xs text-slate-500">スターをつけておくと次回の出題プールにも再循環し、いつでも復習可能です。</p>
-        </div>
+      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-amber-200 shadow-2xs">
+        <h2 class="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          スター付き復習帳（保持中論点）
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">スターをつけた論点は端末に永続保存され、毎朝7時の更新後も二度と消えずにここで復習できます。</p>
       </div>
       <div id="starredQuestionsContainer" class="space-y-4">
         <!-- Rendered by JS -->
       </div>
     </section>
 
+    <!-- Discarded View Section -->
     <section id="discardedView" class="hidden space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
-            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-            永久除外された過去問（スター未付与）
-          </h2>
-          <p class="text-xs text-slate-500">朝7時の更新時にスターが付いていなかったため、二度と出題されない問題のリストです。</p>
-        </div>
+      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs">
+        <h2 class="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+          永久除外された過去問（スター未付与）
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">朝7時の更新時にスターが付いていなかったため、二度と出題されない論点の記録です。</p>
       </div>
       <div id="discardedQuestionsContainer" class="space-y-3">
         <!-- Rendered by JS -->
@@ -228,6 +226,7 @@
 
   </main>
 
+  <!-- Detail Modal -->
   <div id="detailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col max-h-[90vh]">
       <div class="px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white flex items-center justify-between">
@@ -323,7 +322,8 @@
         title: "DPC/PDPSにおける包括評価と出来高算定の区分",
         question: "DPC/PDPS対象病院における入院診療報酬の算定構造において、包括評価部分に含まれるものと、出来高算定として除外されるものの組み合わせとして適切な理解を問う。",
         keyPoint: "手術、麻酔、内視鏡検査、一定額以上の高額薬剤（抗悪性腫瘍剤等）は出来高算定。入院基本料、検査、投薬、注射、画像診断等は包括評価となる。",
-        explanation: "医療経営士2級で頻出のDPC制度の基本構造です。\n・包括評価範囲（診断群分類点数表）：入院基本料等、検査（検体・生体）、投薬・注射（一部特定除外除く）、1,000点未満の画像診断等。\n・出来高評価範囲：手術、麻酔、内視鏡・カテーテル手技、悪性腫瘍に対する高額薬剤、退院時処方など。\nDPC病院では包括範囲内のコスト削減（後発医薬品推進や過剰検査の適正化）と、適切な診断群（CC：副傷病名）の漏れなきアップコーディング防止・監査体制が経営上極めて重要となります。"
+        explanation: "医療経営士2級で頻出のDPC制度の基本構造です。\n・包括評価範囲（診断群分類点数表）：入院基本料等、検査（検体・生体）、投薬・注射（一部特定除外除く）、1,000点未満の画像診断等。\n・出来高評価範囲：手術、麻酔、内視鏡・カテーテル手技、悪性腫瘍に対する高額薬剤、退院時処方など。\nDPC病院では包括範囲内のコスト削減（後発医薬品推進や過剰検査の適正化）と、適切な診断群（CC：副傷病名）の漏れなきアップコーディング防止・監査体制が経営上極めて重要となります。",
+        examTrap: "【試験頻出トラップ】\n・『画像診断はすべて出来高である』は誤り。1,000点以上の特殊画像診断（CT・MRI等の一部）や造影剤注入手技等を除き、原則包括範囲に含まれます。\n・手術と麻酔は出来高ですが、術前のルーチン検査や術後処置の多くは包括点数に含まれる点に注意してください。"
       },
       {
         id: "mm2-002",
@@ -331,7 +331,8 @@
         title: "病院財務分析における医業利益率と損益分岐点比率",
         question: "病院の経営指標として用いる『医業利益率』および『損益分岐点比率』の算出式と、健全性評価における目標値に関する論点。",
         keyPoint: "医業利益率 = 医業利益 ÷ 医業収益 × 100（一般病院目標は3%以上）。損益分岐点比率は85%〜90%以下が経営的に安全圏とされる。",
-        explanation: "医療機関は一般企業と異なり受取利息や補助金などの営業外損益が大きく動くため、『医業利益（医業収益 - 医業費用）』が本業の稼ぐ力を示す最重要指標です。\n損益分岐点比率（損益分岐点売上高 ÷ 医業収益）が100%を超えている場合、本業赤字であることを意味します。固定費（人件費・減価償却費）が全費用の約7割を占める病院経営では、限界利益率の向上と稼働病床利用率の維持が分岐点比率改善の鍵となります。"
+        explanation: "医療機関は一般企業と異なり受取利息や補助金などの営業外損益が大きく動くため、『医業利益（医業収益 - 医業費用）』が本業の稼ぐ力を示す最重要指標です。\n損益分岐点比率（損益分岐点売上高 ÷ 医業収益）が100%を超えている場合、本業赤字であることを意味します。固定費（人件費・減価償却費）が全費用の約7割を占める病院経営では、限界利益率の向上と稼働病床利用率の維持が分岐点比率改善の鍵となります。",
+        examTrap: "【試験頻出トラップ】\n・分母が『経常収益』やすべての総収益とすり替えられる選択肢に注意。医業利益率は『医業収益』が分母です。\n・損益分岐点比率は『低いほど安全』であり、90%を超えると固定費負担が過重で不況や病床稼働低下に対する抵抗力が極めて低くなります。"
       },
       {
         id: "mm2-003",
@@ -339,7 +340,8 @@
         title: "病床機能報告制度と4つの医療機能区分",
         question: "医療法に基づき各医療機関が都道府県に毎年報告する『病床機能報告』における4つの機能区分とその定義。",
         keyPoint: "①高度急性期、②急性期、③回復期、④慢性の4区分。都道府県の地域医療構想調整会議において病床再編・ダウンサイジングの議論の基礎となる。",
-        explanation: "医療法第30条の13に規定される制度です。\n・高度急性期：急性期の患者に対し、状態の早期安定化に向けて診療密度の特に高い医療を提供。\n・急性期：状態の早期安定化に向けて医療を提供。\n・回復期：急性期を経過した患者への在宅復帰に向けたリハビリテーション等を提供。\n・慢性期：長期にわたり療養を要する患者への医療を提供。\n地域医療構想における2025年/2040年必要病床数の推計と対比し、過剰な急性期病床から回復期・在宅へのシフトが求められています。"
+        explanation: "医療法第30条の13に規定される制度です。\n・高度急性期：急性期の患者に対し、状態の早期安定化に向けて診療密度の特に高い医療を提供。\n・急性期：状態の早期安定化に向けて医療を提供。\n・回復期：急性期を経過した患者への在宅復帰に向けたリハビリテーション等を提供。\n・慢性期：長期にわたり療養を要する患者への医療を提供。\n地域医療構想における2025年/2040年必要病床数の推計と対比し、過剰な急性期病床から回復期・在宅へのシフトが求められています。",
+        examTrap: "【試験頻出トラップ】\n・『療養機能』という独立区分はありません（正しくは『慢性期』）。\n・病床機能報告は『病棟単位』で選択して報告します。病院全体で単一の区分を選ぶのではない点が出題されます。"
       },
       {
         id: "mm2-004",
@@ -347,7 +349,8 @@
         title: "医療事故調査制度とインシデント・アクシデント報告",
         question: "医療法に規定される『医療事故調査制度』における調査対象となる医療事故の定義と院内事故調査委員会の義務。",
         keyPoint: "『提供した医療に起因し、または起因が疑われる死亡・死産』かつ『管理者が予期しなかったもの』に限定。所轄の医療事故調査・支援センターへの報告が義務付けられる。",
-        explanation: "すべての有害事象が対象ではなく、①医療起因＋②予期しなかった死亡・死産が対象です（過失の有無は問わない）。\n管理者は速やかにセンターへ報告し、院内事故調査を行い、遺族への説明と報告書の提出を行います。院内のインシデント報告（ヒヤリハット：レベル0〜3a）とアクシデント（レベル3b以上）の峻別、および「個人の責任追及ではなくシステムのエラー防止（ノンテクニカルスキル・根本原因分析RCA）」への転換が2級のマネジメント論点です。"
+        explanation: "すべての有害事象が対象ではなく、①医療起因＋②予期しなかった死亡・死産が対象です（過失の有無は問わない）。\n管理者は速やかにセンターへ報告し、院内事故調査を行い、遺族への説明と報告書の提出を行います。院内のインシデント報告（ヒヤリハット：レベル0〜3a）とアクシデント（レベル3b以上）の峻別、および「個人の責任追及ではなくシステムのエラー防止（ノンテクニカルスキル・根本原因分析RCA）」への転換が2級のマネジメント論点です。",
+        examTrap: "【試験頻出トラップ】\n・重度の障害（後遺障害）が残った事案は、死亡・死産ではないため本制度のセンター報告対象外です（院内調査の対象にはなり得ますが法定义務ではありません）。\n・『過失がある場合のみ報告する』は誤り。予期せぬ医療起因死であれば過失の有無に関わらず対象です。"
       },
       {
         id: "mm2-005",
@@ -355,7 +358,8 @@
         title: "医師の働き方改革とタスク・シフティング",
         question: "2024年4月より施行された医師の時間外労働上限規制（A水準・B水準・C水準）と、実効性確保のためのタスク・シフト／シェアの推進。",
         keyPoint: "A水準（年960時間/月100時間未満）、B水準・C水準（年1860時間/月100時間未満）。看護師（特定行為研修修了者）や医師事務作業補助者へのタスクシフトが必須要件。",
-        explanation: "医療経営士2級において現在最もホットな労務課題です。\n・A水準：一般病院の勤務医。\n・B水準：地域医療確保（救急指定等）を担う病院の医師。\n・C水準：集中的な研修を行う臨床研修医・専攻医等。\n追加的健康確保措置（面接指導・連続勤務時間制限28時間・勤務間インターバル9時間）の実装に加え、医師事務作業補助者（MA）の配置増による診療録代行入力、特定看護師による動脈ライン確保等のタスクシフトが病院収益と法令遵守の両立に不可欠です。"
+        explanation: "医療経営士2級において現在最もホットな労務課題です。\n・A水準：一般病院の勤務医。\n・B水準：地域医療確保（救急指定等）を担う病院の医師。\n・C水準：集中的な研修を行う臨床研修医・専攻医等。\n追加的健康確保措置（面接指導・連続勤務時間制限28時間・勤務間インターバル9時間）の実装に加え、医師事務作業補助者（MA）の配置増による診療録代行入力、特定看護師による動脈ライン確保等のタスクシフトが病院収益と法令遵守の両立に不可欠です。",
+        examTrap: "【試験頻出トラップ】\n・B水準・C水準であっても『月100時間未満（休日労働含む）』の単月上限はA水準と同一です。年上限のみ1,860時間に緩和されています。\n・連続勤務時間制限（28時間）と勤務間インターバル（9時間）は努力義務ではなく、B・C水準では必須の健康確保措置です。"
       },
       {
         id: "mm2-006",
@@ -363,7 +367,8 @@
         title: "病院の固定資産投資と設備投資の経済性計算",
         question: "高額医療機器（PET-CT、手術支援ロボット等）導入時における回収期間法（Payback Period）と正味現在価値法（NPV）。",
         keyPoint: "回収期間 = 投資額 ÷ 年間キャッシュフロー。NPV > 0であれば投資妥当。医療機器の耐用年数（医用画像装置は通常6年）と保険点数の動向を勘案する。",
-        explanation: "高額医療機器の投資判断では、減価償却費の増大が損益計算書を圧迫します。\n年間キャッシュフロー＝（増加する医業収益 - 増加する現金支出費用）で計算します。医療経営士としては単なる症例数予測だけでなく、保守契約料、専任技師・看護師の人件費、高額材料費、競合他院との診療圏シェア分析（自院の強み・集患力）を総合的にモデル化する能力が求められます。"
+        explanation: "高額医療機器の投資判断では、減価償却費の増大が損益計算書を圧迫します。\n年間キャッシュフロー＝（増加する医業収益 - 増加する現金支出費用）で計算します。医療経営士としては単なる症例数予測だけでなく、保守契約料、専任技師・看護師の人件費、高額材料費、競合他院との診療圏シェア分析（自院の強み・集患力）を総合的にモデル化する能力が求められます。",
+        examTrap: "【試験頻出トラップ】\n・年間キャッシュフローの計算に減価償却費（非現金支出費用）をそのまま引いてしまうミスに注意。損益上の利益に減価償却費を足し戻す必要があります。"
       },
       {
         id: "mm2-007",
@@ -371,7 +376,8 @@
         title: "地域医療連携推進法人制度の活用とメリット",
         question: "医療法に規定される『地域医療連携推進法人』の目的、参加主体、および共同で行える連携業務の範囲。",
         keyPoint: "非営利の一般社団法人として設立。病床融通（病床数の融通）、医薬品・医療機器の共同購入、医療従事者の共同研修などが認められている。",
-        explanation: "複数の医療法人や社会福祉法人が緩やかなネットワークを組む制度です。\n合併とは異なり各法人の独立性を維持したまま、急性期病床と回復期病床の法人間融通、スケールメリットを活かしたSPD（物流管理）・医薬品共同購買によるコストダウン、地域フォーミュラリーの策定が可能になります。人口減少地域における持続可能な医療供給体制の切り札です。"
+        explanation: "複数の医療法人や社会福祉法人が緩やかなネットワークを組む制度です。\n合併とは異なり各法人の独立性を維持したまま、急性期病床と回復期病床の法人間融通、スケールメリットを活かしたSPD（物流管理）・医薬品共同購買によるコストダウン、地域フォーミュラリーの策定が可能になります。人口減少地域における持続可能な医療供給体制の切り札です。",
+        examTrap: "【試験頻出トラップ】\n・『参加法人の資産や負債が一本化（合併）される』は誤り。独立した法人格を維持したまま連携します。\n・参加主体は医療法人だけでなく、社会福祉法人や公益社団法人、大学法人等も含まれます。"
       },
       {
         id: "mm2-008",
@@ -379,7 +385,8 @@
         title: "電子カルテの真正性・見読性・保存性とサイバーセキュリティ",
         question: "厚生労働省『医療情報システムの安全管理に関するガイドライン』における3省2ガイドラインの原則とランサムウェア対策。",
         keyPoint: "3原則：①真正性（改ざん防止）、②見読性（即座に視認・出力可能）、③保存性（法定期限内の保持）。オフラインバックアップの義務付け。",
-        explanation: "近年の病院を標的としたランサムウェア攻撃激化に伴い、ガイドライン第6.0版等でセキュリティ統治が厳格化されました。\n経営層（院長・理事長）の責任としてCISO（最高情報セキュリティ責任者）の配置、ネットワーク分離、外部委託事業者の管理、BCP（電子カルテ停止時の紙カルテ運用訓練）の策定が医療機能評価や診療報酬上も重視されています。"
+        explanation: "近年の病院を標的としたランサムウェア攻撃激化に伴い、ガイドライン第6.0版等でセキュリティ統治が厳格化されました。\n経営層（院長・理事長）の責任としてCISO（最高情報セキュリティ責任者）の配置、ネットワーク分離、外部委託事業者の管理、BCP（電子カルテ停止時の紙カルテ運用訓練）の策定が医療機能評価や診療報酬上も重視されています。",
+        examTrap: "【試験頻出トラップ】\n・真正性とは『本人が作成したことの証明および改ざんされていないこと』であり、単にバックアップを取ること（保存性）と混同しないよう注意が必要です。"
       },
       {
         id: "mm2-009",
@@ -387,7 +394,8 @@
         title: "持分のない医療法人への移行促進税制と基金拠出型",
         question: "平成19年（2007年）第5次医療法改正以降に設立が認められる『基金拠出型医療法人』と出資持分なし法人への事業承継対策。",
         keyPoint: "出資持分あり医療法人は持分払戻請求による倒産リスクや相続税問題がある。認定医療法人制度により持分なし法人（基金拠出型等）への移行優遇がある。",
-        explanation: "旧法の持分あり社団医療法人は、出資者が死亡または退社する際に多額の払戻請求（時価評価された純資産額に応じた額）が発生し、キャッシュ枯渇を招く重大リスクがあります。\n現在は基金拠出型医療法人が主流であり、拠出された基金の返還は純資産の範囲内に制限され、利息も付かないため資本の固定化・安定性が保たれます。"
+        explanation: "旧法の持分あり社団医療法人は、出資者が死亡または退社する際に多額の払戻請求（時価評価された純資産額に応じた額）が発生し、キャッシュ枯渇を招く重大リスクがあります。\n現在は基金拠出型医療法人が主流であり、拠出された基金の返還は純資産の範囲内に制限され、利息も付かないため資本の固定化・安定性が保たれます。",
+        examTrap: "【試験頻出トラップ】\n・『2007年以降も持分あり医療法人の新設は可能である』は誤り。新規設立はすべて持分なし（基金拠出型等）に限定されています。"
       },
       {
         id: "mm2-010",
@@ -395,7 +403,8 @@
         title: "重症度、医療・看護必要度と病棟稼働率マネジメント",
         question: "急性期一般入院料1等の施設基準である『重症度、医療・看護必要度』の評価項目（A項目・B項目・C項目）の役割。",
         keyPoint: "A項目：モニタリング及び処置等（診療密度）。B項目：患者の日常生活機能評価。C項目：手術等の医学的処置。基準比率を下回ると減算または下位区分転落となる。",
-        explanation: "急性期病床の経営上、最もクリティカルな施設基準です。\n必要度を満たす患者比率が基準値を下回ると入院基本料の算定基準から脱落し、1病棟あたり数千万円〜億円規模の減収につながります。そのため入退院支援センター（PFM：Patient Flow Management）による事前スクリーニングと、回復期への転棟タイミングの適正管理が不可欠です。"
+        explanation: "急性期病床の経営上、最もクリティカルな施設基準です。\n必要度を満たす患者比率が基準値を下回ると入院基本料の算定基準から脱落し、1病棟あたり数千万円〜億円規模の減収につながります。そのため入退院支援センター（PFM：Patient Flow Management）による事前スクリーニングと、回復期への転棟タイミングの適正管理が不可欠です。",
+        examTrap: "【試験頻出トラップ】\n・近年の診療報酬改定では、看護師の手間（B項目）よりも客観的な診療実績・手術（A項目・C項目、レセプト電算データに基づく必要度II）へのシフトが進んでいます。"
       },
       {
         id: "mm2-011",
@@ -403,7 +412,8 @@
         title: "バランスト・スコアカード（BSC）の病院への適用",
         question: "病院経営改善においてBSCを活用する際の4つの視点と因果連鎖（戦略マップ）の構築手法。",
         keyPoint: "①学習と成長の視点 → ②内部ビジネスプロセスの視点 → ③患者（顧客）の視点 → ④財務の視点。下位から上位への因果関係で戦略目標をつなぐ。",
-        explanation: "医療機関におけるBSCは、単なる利益追求ではなく「質の高い医療の提供」を患者視点に置き、それを支える内部プロセス（クリニカルパス遵守、待ち時間短縮）と職員教育（学習と成長）が最終的に健全な医業経営（財務）を結実させるという納得感のある戦略推進ツールとして活用されます。"
+        explanation: "医療機関におけるBSCは、単なる利益追求ではなく「質の高い医療の提供」を患者視点に置き、それを支える内部プロセス（クリニカルパス遵守、待ち時間短縮）と職員教育（学習と成長）が最終的に健全な医業経営（財務）を結実させるという納得感のある戦略推進ツールとして活用されます。",
+        examTrap: "【試験頻出トラップ】\n・一般的な企業では最上位が財務ですが、非営利組織や公立病院では『患者・地域住民の視点（理念・ミッション達成）』を最上位に置くカスタマイズもよく出題されます。"
       },
       {
         id: "mm2-012",
@@ -411,7 +421,8 @@
         title: "特定保険医療材料の価格改定（材料価格基準）とSPDシステム",
         question: "償還価格と購入価格の差益（材料差益）の縮小に対応する院内物流管理システム（SPD: Supply Processing Distribution）。",
         keyPoint: "外国平均価格調整や実勢価格改定により材料差益はほぼ消失。SPD導入による過剰在庫削減、期限切れ廃棄防止、ロット追跡管理の徹底が不可欠。",
-        explanation: "医療材料は高額なステントやペースメーカーからガーゼ・注射器まで多岐にわたります。\n定数配置・バーコード消費登録によるバーチャル在庫管理（預託在庫）や消費即発注を行うことで、病院の棚卸資産を圧縮し運転資本の効率化を図ります。"
+        explanation: "医療材料は高額なステントやペースメーカーからガーゼ・注射器まで多岐にわたります。\n定数配置・バーコード消費登録によるバーチャル在庫管理（預託在庫）や消費即発注を行うことで、病院の棚卸資産を圧縮し運転資本の効率化を図ります。",
+        examTrap: "【試験頻出トラップ】\n・『SPDを導入すれば材料の仕入れ単価そのものが劇的に下がる』と断定する選択肢は誤り。SPDの本質は発注・在庫・院内搬送等の管理コスト削減と不良在庫の撲滅です。"
       },
       {
         id: "mm2-013",
@@ -419,7 +430,8 @@
         title: "かかりつけ医機能報告制度と外来機能分化",
         question: "紹介受診重点医療機関と一般診療所における外来機能分化、および定額負担（選定療養費）義務付けの対象。",
         keyPoint: "紹介状なしで200床以上の紹介受診重点医療機関等を受診した場合、初診で最低7,000円、再診で最低3,000円の選定療養費徴収が義務付けられている。",
-        explanation: "大病院の大名行列（長時間待機・3分診療）を是正し、急性期病院は重症救急や専門医療に特化させる政策です。\n逆紹介率の向上と地域のかかりつけ医との連携パス構築により、紹介受診重点医療機関としての指定要件を満たすことが中核病院のブランディングと経営安定に寄与します。"
+        explanation: "大病院の大名行列（長時間待機・3分診療）を是正し、急性期病院は重症救急や専門医療に特化させる政策です。\n逆紹介率の向上と地域のかかりつけ医との連携パス構築により、紹介受診重点医療機関としての指定要件を満たすことが中核病院のブランディングと経営安定に寄与します。",
+        examTrap: "【試験頻出トラップ】\n・特定機能病院および地域医療支援病院に加え、『紹介受診重点医療機関（病床数200床以上）』も定額負担の義務化対象に追加されました。対象病院の範囲が頻出です。"
       },
       {
         id: "mm2-014",
@@ -427,7 +439,8 @@
         title: "QI（Quality Indicator: 医療の質指標）の計測とベンチマーク分析",
         question: "病院機能評価機構やDPCデータ等を活用したQI（例：退院後再入院率、褥瘡発生率、手指衛生遵守率）を用いたPDCAサイクル。",
         keyPoint: "アウトカム指標とプロセス指標を他院とベンチマーク比較し、客観的なエビデンスに基づいて診療プロセスを標準化・改善する。",
-        explanation: "医療の質と経営効率は相反するものではなく、例えば術後感染症（SSI）の低減や早期離床の推進は在院日数の短縮と病床回転率の向上を同時にもたらします。医療経営士は臨床指標を財務インパクトへ翻訳する能力が試されます。"
+        explanation: "医療の質と経営効率は相反するものではなく、例えば術後感染症（SSI）の低減や早期離床の推進は在院日数の短縮と病床回転率の向上を同時にもたらします。医療経営士は臨床指標を財務インパクトへ翻訳する能力が試されます。",
+        examTrap: "【試験頻出トラップ】\n・『QIは他院との優劣をランキング付けして公表することが主目的である』は誤り。自院の経年変化や標準値との乖離を特定し、内部質改善（QI活動）に活かすことが本質です。"
       },
       {
         id: "mm2-015",
@@ -435,7 +448,8 @@
         title: "病院の運転資金計算とキャッシュフロー計算書",
         question: "診療報酬請求から入金までのタイムラグ（通常約2ヶ月）を踏まえた所要運転資金の管理と黒字倒産のメカニズム。",
         keyPoint: "当月診療分は翌月10日請求、翌々月末（約2ヶ月後）に支払基金・国保連から入金。売上急増期や賞与支給月に運転資金ショートが発生しやすい。",
-        explanation: "売掛金（診療報酬未収金）のサイトが2ヶ月であるのに対し、職員給与は当月払い、医薬品・診療材料の買掛金は翌月末払いであることが多く、急激な入院患者増の局面では先行する仕入や人件費支払いで資金繰りが逼迫します。当座貸越枠の設定やファクタリングの理解が問われます。"
+        explanation: "売掛金（診療報酬未収金）のサイトが2ヶ月であるのに対し、職員給与は当月払い、医薬品・診療材料の買掛金は翌月末払いであることが多く、急激な入院患者増の局面では先行する仕入や人件費支払いで資金繰りが逼迫します。当座貸越枠の設定やファクタリングの理解が問われます。",
+        examTrap: "【試験頻出トラップ】\n・『損益計算書が黒字であれば資金ショートは起こらない』は初歩的な誤り。売掛金の回収タイムラグによる運転資金の増加が黒字倒産を引き起こします。"
       },
       {
         id: "mm2-016",
@@ -443,7 +457,8 @@
         title: "PFM（Patient Flow Management: 入退院支援）による病床コントロール",
         question: "予定入院患者に対して入院決定時から介入し、退院先調整や入院前検査を行うPFMセンターの機能と在院日数短縮効果。",
         keyPoint: "入院前に入院目的・在宅療養環境の課題を抽出し、入院日初日から退院支援計画を稼働させる。平均在院日数の短縮と病床利用率の最大化を両立。",
-        explanation: "かつての「退院が決まってから相談室が動く」後手体制から、外来通院時の入院決定段階から多職種（医師・看護師・MSW・事務）が介入する先手管理へ移行。これにより退院困難事例の在院長期化を防ぎ、退院支援加算の確実な算定につながります。"
+        explanation: "かつての「退院が決まってから相談室が動く」後手体制から、外来通院時の入院決定段階から多職種（医師・看護師・MSW・事務）が介入する先手管理へ移行。これにより退院困難事例の在院長期化を防ぎ、退院支援加算の確実な算定につながります。",
+        examTrap: "【試験頻出トラップ】\n・PFMの開始時期は『入院直後』ではなく『外来での入院決定時（入院前）』です。前もってリスクスクリーニングを行う点が最大のポイントです。"
       },
       {
         id: "mm2-017",
@@ -451,7 +466,8 @@
         title: "医療広告ガイドラインの規制要件と限定解除",
         question: "医療法におけるウェブサイトを含む医療広告の規制体系、虚偽・誇大広告の禁止、および一定の要件を満たした場合の『限定解除』。",
         keyPoint: "比較優良広告、誇大広告、主観的体験談（口コミ）、ビフォーアフター写真の単独掲載は原則禁止。自由診療の費用・リスク明記等で限定解除が可能。",
-        explanation: "医療は患者の生命身体に関わるため情報の非対称性が高く、消費者を誤認させる広告は厳罰対象です。病院ホームページも広告規制の対象に含まれており、自由診療や先進医療を掲載する際は、治療内容・標準的費用・主なリスクや副作用の明示が必須です。"
+        explanation: "医療は患者の生命身体に関わるため情報の非対称性が高く、消費者を誤認させる広告は厳罰対象です。病院ホームページも広告規制の対象に含まれており、自由診療や先進医療を掲載する際は、治療内容・標準的費用・主なリスクや副作用の明示が必須です。",
+        examTrap: "【試験頻出トラップ】\n・『患者の主観的な感謝のメッセージ（体験談）は限定解除要件を満たせば掲載できる』は誤り。体験談は限定解除の対象外であり、いかなる場合も掲載不可です。"
       },
       {
         id: "mm2-018",
@@ -459,7 +475,8 @@
         title: "地域包括ケア病棟（入院料）の施設基準と3つの役割",
         question: "急性期からのポストアキュート（受入）、在宅からのサブアキュート（受入）、および在宅復帰支援の3機能を担う病棟の経営戦略。",
         keyPoint: "在宅復帰率70%以上、自院一般病棟からの転棟比率制限、自宅等からの入院受入実績要件など、包括点数と要件の厳格化に対応した運用の最適化。",
-        explanation: "急性期病棟の平均在院日数要件をクリアするための受け皿として機能するだけでなく、地域開業医からのレスパイトや肺炎・脱水などの急性増悪を受け入れるハブです。リハビリ提供実績や在宅復帰支援の専従配置が求められます。"
+        explanation: "急性期病棟の平均在院日数要件をクリアするための受け皿として機能するだけでなく、地域開業医からのレスパイトや肺炎・脱水などの急性増悪を受け入れるハブです。リハビリ提供実績や在宅復帰支援の専従配置が求められます。",
+        examTrap: "【試験頻出トラップ】\n・『自院の一般病棟からの転棟患者だけで100%運用できる』は誤り。自宅や介護施設からの直接受入（サブアキュート）実績や、他院からの受入実績要件が厳格化されています。"
       },
       {
         id: "mm2-019",
@@ -467,7 +484,8 @@
         title: "医業収益に対する人件費比率（労働分配率）の適正水準",
         question: "病院における医業費用構成で最大を占める給与費比率（人件費 ÷ 医業収益）の適正目安と、人件費高騰時の改善施策。",
         keyPoint: "病院の人件費比率は概ね50%〜55%が適正水準（一般企業より高い労働集約型）。60%を超えると赤字化のリスクが高まる。",
-        explanation: "医師・看護師・コメディカル・事務など多職種が24時間体制で稼働するため、極めて労働集約的な産業です。人件費の削減は士気低下や離職（医師引き揚げ）を招くリスクがあるため、単なるリストラではなく、付加価値の高い診療報酬項目の獲得による医業収益（分母）の拡大が本質的処方箋です。"
+        explanation: "医師・看護師・コメディカル・事務など多職種が24時間体制で稼働するため、極めて労働集約的な産業です。人件費の削減は士気低下や離職（医師引き揚げ）を招くリスクがあるため、単なるリストラではなく、付加価値の高い診療報酬項目の獲得による医業収益（分母）の拡大が本質的処方箋です。",
+        examTrap: "【試験頻出トラップ】\n・一般企業では人件費比率20〜30%程度が多いのに対し、病院は50%超が通常です。一般製造業の数値をそのまま当てはめた誤答肢に惑わされないようにしてください。"
       },
       {
         id: "mm2-020",
@@ -475,9 +493,12 @@
         title: "医療法人の非営利性と剰余金の配当禁止規定",
         question: "医療法第54条『医療法人は、剰余金の配当をしてはならない』の原則と、医療機関におけるガバナンス改革（監事・評議員会の機能）。",
         keyPoint: "非営利性維持のため出資者への配当は絶対禁止。役員報酬の過大な設定（実質的配当）の防止と外部監査・医療法人ガバナンス強化が進む。",
-        explanation: "医療法人は公共性の高い医療を提供する主体であるため、株式会社のような株主配当は認められません。利益剰余金は医療機器の更新や施設改修、職員の処遇改善など病院経営基盤の維持向上に再投資されなければなりません。"
+        explanation: "医療法人は公共性の高い医療を提供する主体であるため、株式会社のような株主配当は認められません。利益剰余金は医療機器の更新や施設改修、職員の処遇改善など病院経営基盤の維持向上に再投資されなければなりません。",
+        examTrap: "【試験頻出トラップ】\n・『定款に定めれば出資額に応じた剰余金の配当を行うことができる』は絶対に誤り。定款の定めがあっても配当は法令で禁止されています。"
       }
     ];
+
+    const STORAGE_KEY = 'mm2_daily_master_v1';
 
     class DailyManager {
       constructor() {
@@ -494,7 +515,7 @@
         this.checkDayTransition();
       }
 
-      // 毎朝7時を境界とする日付キー (YYYY-MM-DD-7AM) を生成
+      // 毎朝7時を境界とする日付キー (YYYY-MM-DD) を生成
       get7AmDateKey(date = new Date()) {
         const d = new Date(date);
         // 朝7時前なら前日扱い
@@ -516,17 +537,58 @@
         return target;
       }
 
+      // 端末（localStorage）への確実な保存
+      saveState() {
+        try {
+          const serialized = {
+            lastSessionDateKey: this.state.lastSessionDateKey,
+            todayQuestionIds: this.state.todayQuestionIds,
+            starredIds: Array.from(this.state.starredIds),
+            discardedIds: Array.from(this.state.discardedIds),
+            seenIds: Array.from(this.state.seenIds),
+            readIds: Array.from(this.state.readIds)
+          };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
+        } catch (e) {
+          console.warn("Storage save failed:", e);
+        }
+      }
+
+      // 端末（localStorage）からの復元
       loadState() {
-        // メモリ内初期状態（ユーザー規則：localStorage使用不可、シングルセッション・メモリ優先）
-        // アプリ起動時に当日の日付キーを設定
-        this.state.lastSessionDateKey = this.get7AmDateKey();
+        const currentKey = this.get7AmDateKey();
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const data = JSON.parse(raw);
+            this.state.lastSessionDateKey = data.lastSessionDateKey || currentKey;
+            this.state.todayQuestionIds = Array.isArray(data.todayQuestionIds) ? data.todayQuestionIds : [];
+            this.state.starredIds = new Set(data.starredIds || []);
+            this.state.discardedIds = new Set(data.discardedIds || []);
+            this.state.seenIds = new Set(data.seenIds || []);
+            this.state.readIds = new Set(data.readIds || []);
+
+            // もし今日の問題がまだ生成されていない場合、生成
+            if (!this.state.todayQuestionIds || this.state.todayQuestionIds.length === 0) {
+              this.state.lastSessionDateKey = currentKey;
+              this.initDailyQuestions();
+            }
+            return;
+          }
+        } catch (e) {
+          console.warn("Storage load failed, initializing defaults:", e);
+        }
+
+        // 初回起動時
+        this.state.lastSessionDateKey = currentKey;
         this.initDailyQuestions();
+        this.saveState();
       }
 
       initDailyQuestions() {
         // 出題ルール：
         // 1. 過去に出たもののうち、スターがついていないものは除外（discardedIds）
-        // 2. スターがついているものは復習プールとして再出題候補、または未出題のものから優先ピック
+        // 2. スターがついているものは復習帳に残りつつ再出題プールにも保持
         
         const availablePool = this.questions.filter(q => {
           // 既に永久除外されたものは絶対除外
@@ -563,11 +625,12 @@
         // 出題リストを記録
         this.state.todayQuestionIds = selected.map(q => q.id);
         selected.forEach(q => this.state.seenIds.add(q.id));
+        this.saveState();
       }
 
       perform7AmTransition() {
         // ★重要要件：「過去に出たものはスターがついていないものは二度と使わない」
-        // 前日の5問を評価：スターがついていないものは discardedIds に永久追加！
+        // 前日の出題を評価：スターがついていないものは discardedIds に永久追加！
         const currentDailyIds = [...this.state.todayQuestionIds];
         
         currentDailyIds.forEach(id => {
@@ -579,6 +642,7 @@
         // 日付キーを更新し、新しい5問を抽出
         this.state.lastSessionDateKey = this.get7AmDateKey();
         this.initDailyQuestions();
+        this.saveState();
       }
 
       toggleStar(questionId) {
@@ -590,6 +654,7 @@
           // スターを付けたものは除外リストから保護
           this.state.discardedIds.delete(questionId);
         }
+        this.saveState();
         return !has;
       }
 
@@ -600,6 +665,7 @@
         } else {
           this.state.readIds.add(questionId);
         }
+        this.saveState();
         return !isRead;
       }
 
@@ -662,7 +728,6 @@
 
     // Safari / iOSホーム画面 & ファビコン用の高品質ベクターアイコンを動的生成
     function setupSafariAppIcons() {
-      // 1. SVGベクターアイコンのData URI（タブ・モダンブラウザ用）
       const svgIcon = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
           <defs>
@@ -679,22 +744,11 @@
               <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.25" />
             </filter>
           </defs>
-          <!-- 背景ベース -->
           <rect width="180" height="180" rx="38" fill="url(#bgGrad)" />
-          
-          <!-- ホワイトカルテ／シールドベース -->
           <rect x="42" y="36" width="96" height="110" rx="18" fill="#ffffff" filter="url(#shadow)" />
-          
-          <!-- カルテ上部クリップ -->
           <rect x="68" y="28" width="44" height="16" rx="8" fill="#10b981" />
-          
-          <!-- 医療の十字シンボル (エメラルド) -->
           <path d="M90 60 v40 M70 80 h40" stroke="#059669" stroke-width="12" stroke-linecap="round" />
-          
-          <!-- 経営・知性の星（ゴールドスター） -->
           <polygon points="120,44 124,53 134,54 126,61 129,71 120,65 111,71 114,61 106,54 116,53" fill="url(#goldGrad)" filter="url(#shadow)" />
-          
-          <!-- 下部のライン演出 -->
           <rect x="58" y="116" width="64" height="5" rx="2.5" fill="#cbd5e1" />
           <rect x="58" y="126" width="40" height="5" rx="2.5" fill="#cbd5e1" />
         </svg>
@@ -706,7 +760,6 @@
         faviconTag.href = svgDataUrl;
       }
 
-      // 2. iOS Safari「ホーム画面に追加」用の高解像度PNGをCanvas経由で即時レンダリング
       try {
         const canvas = document.createElement('canvas');
         canvas.width = 180;
@@ -789,7 +842,6 @@
       const isStarred = app.state.starredIds.has(q.id);
       const isDiscarded = app.state.discardedIds.has(q.id);
       const isRead = app.state.readIds.has(q.id);
-      const isDaily = options.isDaily || false;
 
       const card = document.createElement('div');
       card.className = `bg-white rounded-2xl border transition-all duration-200 p-5 shadow-xs hover:shadow-md ${
@@ -873,13 +925,12 @@
         </div>
       `;
 
-      // Event Listeners on Card
       card.querySelectorAll('[data-action="toggle-star"]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const targetId = btn.getAttribute('data-id');
           const newState = app.toggleStar(targetId);
-          showToast(newState ? '★ スターをつけました（次回も保持）' : 'スターを解除しました', newState);
+          showToast(newState ? '★ スターをつけました（復習帳に保存）' : 'スターを解除しました', newState);
           renderAll();
         });
       });
@@ -912,7 +963,6 @@
     }
 
     function renderAll() {
-      // 1. ヘッダー・サマリー情報
       const dateKey = app.get7AmDateKey();
       currentCycleLabelEl.textContent = `${dateKey} 07:00 〜 翌朝07:00 枠`;
       dailyDateDisplayEl.textContent = `${dateKey} 朝7:00付 出題`;
@@ -929,7 +979,7 @@
       starredBadgeCountEl.textContent = app.state.starredIds.size;
       discardedBadgeCountEl.textContent = app.state.discardedIds.size;
 
-      // 2. 本日の5問 レンダリング
+      // 1. 本日の5問 レンダリング
       dailyQuestionsContainer.innerHTML = '';
       if (todayQuestions.length === 0) {
         dailyQuestionsContainer.innerHTML = `
@@ -943,7 +993,7 @@
         });
       }
 
-      // 3. スター付き復習帳 レンダリング
+      // 2. スター付き復習帳 レンダリング（確実に全スター論点を表示）
       starredQuestionsContainer.innerHTML = '';
       const starredList = app.questions.filter(q => app.state.starredIds.has(q.id));
       if (starredList.length === 0) {
@@ -953,7 +1003,7 @@
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             <div class="text-sm font-bold text-slate-600">スター付きの論点はまだありません</div>
-            <p class="text-xs">今日の5問の中で復習したい重要ポイントに★をつけておくと、ここにストックされ明日の更新後も保護されます。</p>
+            <p class="text-xs">今日の5問の中で復習したい重要ポイントに「★スターをつける」を押すと、ここに永久ストックされいつでも再確認できます。</p>
           </div>
         `;
       } else {
@@ -962,7 +1012,7 @@
         });
       }
 
-      // 4. 除外済み履歴 レンダリング
+      // 3. 除外済み履歴 レンダリング
       discardedQuestionsContainer.innerHTML = '';
       const discardedList = app.questions.filter(q => app.state.discardedIds.has(q.id));
       if (discardedList.length === 0) {
@@ -974,14 +1024,14 @@
       } else {
         discardedList.forEach((q, idx) => {
           const div = document.createElement('div');
-          div.className = "bg-white p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs";
+          div.className = "bg-white p-3.5 rounded-xl border border-slate-200 flex items-center justify-between text-xs";
           div.innerHTML = `
             <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+              <span class="w-2 h-2 rounded-full bg-slate-300"></span>
               <span class="font-bold text-slate-700">${q.title}</span>
-              <span class="text-slate-400 text-[10px]">(${q.category})</span>
+              <span class="text-slate-400 text-[11px]">(${q.category})</span>
             </div>
-            <span class="text-rose-500 font-semibold text-[11px]">再出題不可</span>
+            <span class="text-slate-400 font-medium text-[11px] bg-slate-100 px-2 py-0.5 rounded">学習完了（除外）</span>
           `;
           discardedQuestionsContainer.appendChild(div);
         });
@@ -1003,10 +1053,10 @@
       aiResponseBox.classList.add('hidden');
       aiResponseBox.textContent = '';
       runGeminiAiAnalysisBtn.innerHTML = `
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-emerald-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-        <span>Gemini AIにこの論点の2級頻出ひっかけポイントを質問</span>
+        <span class="tracking-wide">AIにこの論点の頻出ひっかけポイントを質問</span>
       `;
       runGeminiAiAnalysisBtn.disabled = false;
 
@@ -1061,7 +1111,7 @@
       if (!activeModalQuestionId) return;
       const res = app.toggleStar(activeModalQuestionId);
       updateModalStarButton();
-      showToast(res ? '★ スターをつけました（次回も保持）' : 'スターを解除しました', res);
+      showToast(res ? '★ スターをつけました（復習帳に保存）' : 'スターを解除しました', res);
       renderAll();
     });
 
@@ -1102,14 +1152,13 @@
       `;
 
       aiResponseBox.classList.remove('hidden');
-      aiResponseBox.textContent = '思考中... 医療経営士2級の過去問傾向と頻出ひっかけパターンを整理しています。';
+      aiResponseBox.textContent = '整理中... 医療経営士2級の頻出ひっかけパターンを読み込んでいます。';
 
-      // 専門家による頻出トラップ（オフライン・Safari単体でも100%即座に学習可能）
       const baseTrapAnalysis = q.examTrap || `【医療経営士2級 合格キーポイント】\n・論点: ${q.title}\n・重要判定基準: ${q.keyPoint}\n・本試験では用語の定義（法的な境界線や数値基準）のすり替えが多いため、制度趣旨と連動して暗記してください。`;
 
       try {
         const apiKey = "";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
         const systemPrompt = "あなたは医療経営士2級の試験指導専門家です。提示された論点について、実際の検定試験で出題されやすい『ひっかけ選択肢のパターン』『実務上の注意点』『暗記しておくべき数値・キーワード』を箇条書きで簡潔明瞭（300文字程度）に解説してください。";
         const userPrompt = `論点タイトル: ${q.title}\n分野: ${q.category}\n要約: ${q.question}\n重要ポイント: ${q.keyPoint}`;
@@ -1139,7 +1188,6 @@
             return;
           }
         }
-        // レスポンスが不通・外部Safariでキー未設定等の場合、確実に役立つ内蔵の2級頻出トラップ解説を美麗表示
         aiResponseBox.innerHTML = `
           <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-teal-600"></span>
@@ -1148,7 +1196,6 @@
           <div class="text-slate-800">${baseTrapAnalysis}</div>
         `;
       } catch (err) {
-        // 通信遮断や外部環境でも学習が止まらないようフォールバック
         aiResponseBox.innerHTML = `
           <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-teal-600"></span>
@@ -1187,6 +1234,8 @@
         tabDiscarded.classList.remove('text-slate-600', 'hover:bg-slate-100');
         discardedView.classList.remove('hidden');
       }
+      // タブ切り替え時に最新の内容を再描画
+      renderAll();
     }
 
     tabDaily.addEventListener('click', () => switchTab('daily'));
@@ -1194,7 +1243,6 @@
     tabDiscarded.addEventListener('click', () => switchTab('discarded'));
 
     simNextDayBtn.addEventListener('click', () => {
-      // ユーザー確認メッセージ（alertやconfirmを使わずトーストと即時反映）
       const starCount = app.state.todayQuestionIds.filter(id => app.state.starredIds.has(id)).length;
       const discardCount = 5 - starCount;
       
@@ -1204,7 +1252,6 @@
     });
 
     document.getElementById('askAiPromptBtn').addEventListener('click', () => {
-      // 本日の1問目をサクッとAIで確認
       if (app.state.todayQuestionIds.length > 0) {
         openDetailModal(app.state.todayQuestionIds[0]);
       }
