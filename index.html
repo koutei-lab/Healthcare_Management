@@ -1326,7 +1326,8 @@
 
     modalCopyBtn.addEventListener('click', () => {
       if (!activeModalQuestionId) return;
-      const q = app.questions.find(item => item.id === activeModalQuestionId);
+      const allQuestions = app.getAllQuestions();
+      const q = allQuestions.find(item => item.id === activeModalQuestionId);
       if (!q) return;
       const copyContent = `【医療経営士2級】${q.title} (${q.category})\n\n■出題論点:\n${q.question}\n\n■合格キーポイント:\n${q.keyPoint}\n\n■詳細解説:\n${q.explanation}`;
       copyTextToClipboard(copyContent);
@@ -1340,7 +1341,8 @@
     });
 
     runGeminiAiAnalysisBtn.addEventListener('click', async () => {
-      const q = app.questions.find(item => item.id === activeModalQuestionId);
+      const allQuestions = app.getAllQuestions();
+      const q = allQuestions.find(item => item.id === activeModalQuestionId);
       if (!q) return;
 
       runGeminiAiAnalysisBtn.disabled = true;
@@ -1353,13 +1355,21 @@
       `;
 
       aiResponseBox.classList.remove('hidden');
-      aiResponseBox.textContent = '整理中... 医療経営士2級の頻出ひっかけパターンを読み込んでいます。';
+      aiResponseBox.innerHTML = `
+        <div class="flex items-center gap-2 text-teal-800 font-semibold animate-pulse">
+          <svg class="w-4 h-4 animate-spin shrink-0 text-teal-600" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          医療経営士2級の試験傾向・頻出ひっかけパターンを整理中...
+        </div>
+      `;
 
-      const baseTrapAnalysis = q.examTrap || `【医療経営士2級 合格キーポイント】\n・論点: ${q.title}\n・重要判定基準: ${q.keyPoint}\n・本試験では用語の定義（法的な境界線や数値基準）のすり替えが多いため、制度趣旨と連動して暗記してください。`;
+      const baseTrapAnalysis = q.examTrap || `【医療経営士2級 合格キーポイント＆盲点】\n・論点: ${q.title}\n・重要判定基準: ${q.keyPoint}\n・本試験では用語の定義（法的な境界線や数値基準）のすり替えが多いため、制度趣旨と連動して暗記してください。`;
 
       try {
         const apiKey = "";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
         const systemPrompt = "あなたは医療経営士2級の試験指導専門家です。提示された論点について、実際の検定試験で出題されやすい『ひっかけ選択肢のパターン』『実務上の注意点』『暗記しておくべき数値・キーワード』を箇条書きで簡潔明瞭（300文字程度）に解説してください。";
         const userPrompt = `論点タイトル: ${q.title}\n分野: ${q.category}\n要約: ${q.question}\n重要ポイント: ${q.keyPoint}`;
@@ -1380,29 +1390,31 @@
           const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
           if (text) {
             aiResponseBox.innerHTML = `
-              <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-teal-600"></span>
-                Gemini AI 試験分析レポート
+              <div class="font-bold text-teal-900 mb-2 flex items-center gap-1.5 border-b border-teal-200 pb-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-600 inline-block"></span>
+                Gemini AI 試験分析レポート（頻出ひっかけ・盲点）
               </div>
-              <div class="text-slate-800">${text}</div>
+              <div class="text-slate-800 leading-relaxed whitespace-pre-line text-sm sm:text-base">${text}</div>
             `;
             return;
           }
         }
+        
+        // フォールバック（ネットワーク制限環境でも即座に高品質な試験トラップを表示）
         aiResponseBox.innerHTML = `
-          <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+          <div class="font-bold text-teal-900 mb-2 flex items-center gap-1.5 border-b border-teal-200 pb-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-teal-600 inline-block"></span>
             医療経営士2級 頻出トラップ＆盲点解説
           </div>
-          <div class="text-slate-800">${baseTrapAnalysis}</div>
+          <div class="text-slate-800 leading-relaxed whitespace-pre-line text-sm sm:text-base">${baseTrapAnalysis}</div>
         `;
       } catch (err) {
         aiResponseBox.innerHTML = `
-          <div class="font-bold text-teal-900 mb-1 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+          <div class="font-bold text-teal-900 mb-2 flex items-center gap-1.5 border-b border-teal-200 pb-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-teal-600 inline-block"></span>
             医療経営士2級 頻出トラップ＆盲点解説
           </div>
-          <div class="text-slate-800">${baseTrapAnalysis}</div>
+          <div class="text-slate-800 leading-relaxed whitespace-pre-line text-sm sm:text-base">${baseTrapAnalysis}</div>
         `;
       } finally {
         runGeminiAiAnalysisBtn.disabled = false;
