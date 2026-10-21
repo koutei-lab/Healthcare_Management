@@ -68,35 +68,52 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans">
 
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-200">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-5xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
+      <!-- Left: Logo & Title -->
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0 shrink-0">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-xs shrink-0">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </div>
-        <div>
-          <h1 class="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-            医療経営士2級 <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">Daily Master</span>
-          </h1>
-          <p class="text-xs text-slate-500 hidden sm:block">毎朝7時更新・スター保持復習システム</p>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5">
+            <h1 class="text-sm sm:text-base font-extrabold text-slate-800 whitespace-nowrap tracking-tight">
+              医療経営士2級
+            </h1>
+            <span class="hidden md:inline-flex text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap">
+              Daily Master
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 hidden sm:block truncate">毎朝7時更新・スター保持復習システム</p>
         </div>
       </div>
 
-      <div class="flex items-center gap-2 sm:gap-4">
-        <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-right">
-          <div class="text-[10px] text-slate-500 font-medium flex items-center justify-end gap-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span> 次回更新まで
-          </div>
-          <div id="countdownTimer" class="text-xs font-mono font-bold text-slate-700">--:--:--</div>
+      <!-- Right: Timer Pill & Action Buttons -->
+      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        <!-- Compact Timer Pill (No awkward line breaks) -->
+        <div class="flex items-center gap-1 sm:gap-1.5 bg-slate-100/90 border border-slate-200/80 px-2 sm:px-2.5 py-1 rounded-lg text-slate-700 whitespace-nowrap shrink-0" title="次回更新（毎朝7:00）までの残り時間">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse shrink-0"></span>
+          <span class="text-[10px] text-slate-400 hidden lg:inline">更新まで</span>
+          <span id="countdownTimer" class="text-xs font-mono font-bold text-slate-700">--:--:--</span>
         </div>
 
-        <button id="simNextDayBtn" title="翌日7時の更新をテスト" class="p-2 text-slate-500 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition border border-slate-200 text-xs flex items-center gap-1 font-medium">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Fresh 5 Questions Button -->
+        <button id="getFreshQuestionsBtn" title="完全に新しい未読の5問を今すぐ出題" class="h-8 px-2 sm:px-3 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white rounded-lg transition shadow-2xs text-xs flex items-center justify-center gap-1 font-bold whitespace-nowrap shrink-0">
+          <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span class="hidden sm:inline">新しい5問を出題</span>
+          <span class="sm:hidden">新問5</span>
+        </button>
+
+        <!-- Simulate Next Day 7AM Button -->
+        <button id="simNextDayBtn" title="翌日7時の更新をテスト" class="h-8 w-8 sm:w-auto sm:px-2.5 text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition border border-slate-200 text-xs flex items-center justify-center gap-1 font-medium whitespace-nowrap shrink-0">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span class="hidden md:inline">翌日7時を体験</span>
+          <span class="hidden md:inline">翌日体験</span>
         </button>
       </div>
     </div>
@@ -495,30 +512,123 @@
         keyPoint: "非営利性維持のため出資者への配当は絶対禁止。役員報酬の過大な設定（実質的配当）の防止と外部監査・医療法人ガバナンス強化が進む。",
         explanation: "医療法人は公共性の高い医療を提供する主体であるため、株式会社のような株主配当は認められません。利益剰余金は医療機器の更新や施設改修、職員の処遇改善など病院経営基盤の維持向上に再投資されなければなりません。",
         examTrap: "【試験頻出トラップ】\n・『定款に定めれば出資額に応じた剰余金の配当を行うことができる』は絶対に誤り。定款の定めがあっても配当は法令で禁止されています。"
+      },
+      {
+        id: "mm2-021",
+        category: "医療法・医療計画",
+        title: "基準病床数制度と病床過剰地域における増床制限",
+        question: "医療法第30条の4に基づく都道府県の『医療計画』における基準病床数の算定式と、増床許可に対する都道府県知事の権限。",
+        keyPoint: "基準病床数を超える既存病床がある地域（病床過剰地域）では、病院開設や増床の許可を与えないことができる。一般・療養・精神等に区分して設定。",
+        explanation: "医療資源の地域偏在是正と医療費適正化を狙いとした制度です。基準病床数算定式には性別・年齢階級別の受療率や人口動態、流出入患者比率が反映されます。公立・公的病院に対する病床削減要請や、病床過剰圏域での回復期転換の誘導など、地域医療構想調整会議での議論と直結しています。",
+        examTrap: "【試験頻出トラップ】\n・『都道府県知事は必ず増床を不許可にしなければならない』ではなく『許可を与えないことができる（裁量規定）』である点に注意が必要です。"
+      },
+      {
+        id: "mm2-022",
+        category: "診療報酬・医療政策",
+        title: "診療報酬改定の意思決定プロセスと改定率の構造",
+        question: "2年に1度行われる診療報酬改定において、内閣が決定する改定率（本体と薬価等）と、中医協（中央社会保険医療協議会）の役割分担。",
+        keyPoint: "改定率全体は内閣が予算編成時に決定（本体＝技術料人件費、薬価・材料＝実勢価格反映）。個別の配分・点数設定は中医協が答申を行う。",
+        explanation: "本体改定率は純粋な政策判断（医師等の賃上げ原資や医療機関の経営実態調査結果に基づく政治判断）であり、薬価改定は市場実勢価格調査に基づく引下げが基調となります。医療経営士は中医協の公聴会資料や診療側・支払側の対立構造を理解し、次期改定を見据えた先手投資を行うことが求められます。",
+        examTrap: "【試験頻出トラップ】\n・中医協が改定率のパーセンテージそのものを決めるのではなく、内閣が改定率を枠組みとして定め、その中で中医協が具体的点数設計を行う点が重要です。"
+      },
+      {
+        id: "mm2-023",
+        category: "看護・チーム医療",
+        title: "看護師特定行為研修制度と手順書運用",
+        question: "保助看法に基づく看護師特定行為研修（38行為21区分）修了者による手順書（プロトコール）に基づく医行為の実践。",
+        keyPoint: "医師の具体的指示を待たずに手順書に基づき特定行為を実施可能。動脈ライン確保、人工呼吸器の設定変更、脱水時の輸液補正等。タスクシフトの柱。",
+        explanation: "特定行為研修修了者を病棟や救急、ICUに配置することで、医師の呼出頻度が激減し当直医の負担軽減に直結します。病院にとっては特定行為研修受講支援加算等の診療報酬上のインセンティブに加え、患者の病状悪化の早期察知と対応迅速化による医療安全上のメリットがあります。",
+        examTrap: "【試験頻出トラップ】\n・『特定看護師は医師の指示なしに自己の判断で投薬変更できる』は誤り。あくまで医師が事前に作成した『手順書』の範囲内でのみ自律的介入が認められます。"
+      },
+      {
+        id: "mm2-024",
+        category: "病院財務・会計",
+        title: "流動比率・当座比率と手元流動性資金の適正月数",
+        question: "短期的な支払能力を測定する流動比率（流動資産 ÷ 流動負債）および当座比率の安全性水準と、病院が保有すべき手元現預金月数。",
+        keyPoint: "流動比率は150%以上（理想200%）、当座比率は100%以上。手元現預金は月間医業費用の1.5ヶ月〜2ヶ月分が突発リスク対応の安全水準。",
+        explanation: "病院は売掛金回収まで約2ヶ月かかるため、手元キャッシュの枯渇が即経営危機となります。特にコロナ禍のような診療制限やサイバー攻撃によるシステム停止、診療報酬改定直後の減収局面を乗り切るため、手元流動性（現預金＋すぐ換金可能な有価証券）を月商の2ヶ月分確保することが財務管理の鉄則です。",
+        examTrap: "【試験頻出トラップ】\n・固定比率（固定資産 ÷ 自己資本）は『100%以下が健全』であり、流動比率のように『高ければ高いほど安全』な指標と混同しないよう注意が必要です。"
+      },
+      {
+        id: "mm2-025",
+        category: "法規・ガバナンス",
+        title: "医療法人の役員選任と監事の独立監査機能",
+        question: "医療法における理事・監事の員数基準（原則理事3名以上、監事1名以上）と、監事の職務権限および理事との兼任禁止規定。",
+        keyPoint: "監事は理事や医療法人の職員と兼任できない。業務監査および会計監査の双方を行い、不正発見時は都道府県知事または総会・評議員会への報告義務がある。",
+        explanation: "医療法人のガバナンス改革により、監事の役割が厳格化されました。特に親族経営が多い医療法人において、理事長の配偶者や顧問税理士が形式的に就任するケースが是正され、外部の公認会計士や弁護士等による独立した牽制機能が求められています。",
+        examTrap: "【試験頻出トラップ】\n・『監事は理事長からの指示を受けて理事会に出席する』は誤り。監事は独立した監査機関であり、理事が不正を行った場合は評議員会を招集する権限も有します。"
+      },
+      {
+        id: "mm2-026",
+        category: "診療報酬・DPC",
+        title: "DPC機能評価係数IIの評価項目と経営改善アプローチ",
+        question: "DPC特定病院グループ等の病院係数を構成する『機能評価係数II』の評価項目（保険診療、地域医療、救急医療、効率化、複雑性、カバー率等）。",
+        keyPoint: "医療機関群（大学病院本院群、特定病院群、標準病院群）ごとに相対評価。自院の強み・弱みのベンチマーク比較による係数アップ施策。",
+        explanation: "機能評価係数IIは1点あたりの単価に直接乗じられるため、0.01の変動で数千万円の医業収益差が生じます。救急搬送の積極受入（救急医療指数）、クリニカルパス徹底による在院日数短縮（効率化指数）、重症疾患・希少手術のカバー（複雑性指数）を病院全体でKPI管理します。",
+        examTrap: "【試験頻出トラップ】\n・『機能評価係数IIは全国すべてのDPC病院で同一の配分がされる』は誤り。診療実績データ（様式1・外来EF統合ファイル）に基づき毎年精緻に改定されます。"
+      },
+      {
+        id: "mm2-027",
+        category: "医療情報・DX",
+        title: "SS-MIX2標準化ストレージと医療データの利活用",
+        question: "厚生労働省電子的診療情報交換推進事業（SS-MIX2）の構造と、HL7 FHIRへの移行による電子カルテ情報共有サービス。",
+        keyPoint: "標準化ストレージにHL7形式でデータを蓄積し、ベンダーフリーでの地域医療情報連携や二次利用（臨床研究・治験・経営分析）を可能にする。",
+        explanation: "異なるカルテメーカー間の壁を破り、患者の検査値・処方歴を地域連携ネットワーク（地域EHR）でシームレスに参照できるようにする国家基盤です。さらに次世代標準『HL7 FHIR』への対応により、マイナポータルを通じたPHR（Personal Health Record）連携が進められています。",
+        examTrap: "【試験頻出トラップ】\n・SS-MIX2は『カルテの画面デザインを統一するソフトウェア』ではなく、『バックエンドで診療データを標準コード（ICD-10・HOTコード等）で保存・抽出する基盤』です。"
+      },
+      {
+        id: "mm2-028",
+        category: "医療安全・質管理",
+        title: "クリニカルパス（臨床診療計画表）とバリアンス分析",
+        question: "標準治療計画（クリニカルパス）の導入メリットと、計画からの逸脱（バリアンス）の抽出・分析による診療プロセス改善手法。",
+        keyPoint: "医療の標準化、在院日数短縮、チーム医療推進、インフォームド・コンセント向上。バリアンス（患者側・医療者側・システム側）を分析し改訂を重ねる。",
+        explanation: "クリニカルパスは単なるコスト削減ツールではなく、チーム全員（医師・看護師・薬剤師・PT・栄養士）が治療ゴールを共有し、術後合併症や離床遅延を未然に防ぐ安全・質管理の基幹システムです。正のバリアンス（早期退院等）と負のバリアンス（発熱・創部感染）の集計がDPC効率化の鍵となります。",
+        examTrap: "【試験頻出トラップ】\n・『パスから患者が逸脱した場合（バリアンス発生時）は直ちにパス使用を全面中止しなければならない』は誤り。逸脱要因を記録・分析し、必要に応じ修正・継続します。"
+      },
+      {
+        id: "mm2-029",
+        category: "病院財務・原価計算",
+        title: "部門別原価計算とABC（活動基準原価計算）の導入",
+        question: "病院の原価計算手法において、間接費（中央検査・放射線・手術室・事務部門等）を活動単位（コストドライバー）に基づいて配賦するABC手法。",
+        keyPoint: "伝統的な売上比や人件費比の配賦から、手術時間・検査件数等の活動実績に基づく配賦へ。診療科別・疾患群別（DPCコード別）の真の損益を把握。",
+        explanation: "多くの病院では外科系が高収益に見えても、手術室維持費や高額減価償却費、滅菌費などの間接費を正しく配賦すると実は赤字という事態が発生します。ABCを適用して診療科別・DPC別の限界利益・営業利益を可視化し、病床稼働と資源投入の最適化（ポートフォリオ再構築）を行います。",
+        examTrap: "【試験頻出トラップ】\n・ABCにおける『コストドライバー』とは原価を発生させる原因因子のことであり、単なる総売上高ではありません。"
+      },
+      {
+        id: "mm2-030",
+        category: "医療法・附帯業務",
+        title: "医療法人の附帯業務（介護老人保健施設等の運営）の制限",
+        question: "医療法第42条に規定される医療法人の『附帯業務』の範囲と、医療法人の本来業務（病院・診療所の開設）との関係性。",
+        keyPoint: "附帯業務は本来業務に支障のない範囲で、定款変更の認可を得て実施可能。老健、訪問看護、有料老人ホーム、看護師養成所等。独立採算が原則。",
+        explanation: "医療法人は営利事業を行えませんが、地域医療・福祉の包括提供を目的として老人保健施設や通所リハ、訪問介護、サ高住等の附帯業務を営むことができます。医療と介護の複合化により、急性期退院患者の受け皿を自法人グループ内で確保し、稼働率と収益基盤を安定化させます。",
+        examTrap: "【試験頻出トラップ】\n・『附帯業務であればいかなる商業活動（飲食チェーンや一般ホテル経営等）も自由に行える』は誤り。医療法第42条に限定列記された業務のみ認められます。"
       }
     ];
 
-    const STORAGE_KEY = 'mm2_daily_master_v1';
+    const STORAGE_KEY = 'mm2_daily_master_v2';
 
     class DailyManager {
       constructor() {
-        this.questions = [...MASTER_QUESTION_BANK];
+        this.baseQuestions = [...MASTER_QUESTION_BANK];
         this.state = {
           lastSessionDateKey: null,
           todayQuestionIds: [],
           starredIds: new Set(),
           discardedIds: new Set(),
           seenIds: new Set(),
-          readIds: new Set()
+          readIds: new Set(),
+          customQuestions: [] // AI generated additions
         };
         this.loadState();
         this.checkDayTransition();
       }
 
-      // 毎朝7時を境界とする日付キー (YYYY-MM-DD) を生成
+      getAllQuestions() {
+        return [...this.baseQuestions, ...(this.state.customQuestions || [])];
+      }
+
       get7AmDateKey(date = new Date()) {
         const d = new Date(date);
-        // 朝7時前なら前日扱い
         if (d.getHours() < 7) {
           d.setDate(d.getDate() - 1);
         }
@@ -537,7 +647,6 @@
         return target;
       }
 
-      // 端末（localStorage）への確実な保存
       saveState() {
         try {
           const serialized = {
@@ -546,7 +655,8 @@
             starredIds: Array.from(this.state.starredIds),
             discardedIds: Array.from(this.state.discardedIds),
             seenIds: Array.from(this.state.seenIds),
-            readIds: Array.from(this.state.readIds)
+            readIds: Array.from(this.state.readIds),
+            customQuestions: this.state.customQuestions || []
           };
           localStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
         } catch (e) {
@@ -554,7 +664,6 @@
         }
       }
 
-      // 端末（localStorage）からの復元
       loadState() {
         const currentKey = this.get7AmDateKey();
         try {
@@ -567,11 +676,11 @@
             this.state.discardedIds = new Set(data.discardedIds || []);
             this.state.seenIds = new Set(data.seenIds || []);
             this.state.readIds = new Set(data.readIds || []);
+            this.state.customQuestions = Array.isArray(data.customQuestions) ? data.customQuestions : [];
 
-            // もし今日の問題がまだ生成されていない場合、生成
             if (!this.state.todayQuestionIds || this.state.todayQuestionIds.length === 0) {
               this.state.lastSessionDateKey = currentKey;
-              this.initDailyQuestions();
+              this.initDailyQuestions(true);
             }
             return;
           }
@@ -579,69 +688,76 @@
           console.warn("Storage load failed, initializing defaults:", e);
         }
 
-        // 初回起動時
         this.state.lastSessionDateKey = currentKey;
-        this.initDailyQuestions();
+        this.initDailyQuestions(true);
         this.saveState();
       }
 
-      initDailyQuestions() {
-        // 出題ルール：
-        // 1. 過去に出たもののうち、スターがついていないものは除外（discardedIds）
-        // 2. スターがついているものは復習帳に残りつつ再出題プールにも保持
-        
-        const availablePool = this.questions.filter(q => {
-          // 既に永久除外されたものは絶対除外
-          if (this.state.discardedIds.has(q.id)) return false;
-          return true;
-        });
+      initDailyQuestions(isNewDay = false) {
+        const allQuestions = this.getAllQuestions();
 
-        // まだ一度も出たことがない新鮮な論点を優先
-        const unseens = availablePool.filter(q => !this.state.seenIds.has(q.id));
-        // スター付き論点（復習用）
-        const starred = availablePool.filter(q => this.state.starredIds.has(q.id));
+        // 永久除外されていないもの
+        const availablePool = allQuestions.filter(q => !this.state.discardedIds.has(q.id));
+
+        // まだ出題されていない（未読・新鮮な）論点
+        let unseens = availablePool.filter(q => !this.state.seenIds.has(q.id));
+
+        // もし未出題が足りなくなった場合（一周した場合）、スター付き以外のseenIdsをリセットして循環
+        if (unseens.length < 5) {
+          this.state.seenIds.clear();
+          // スター付き論点のみ再フラグ
+          this.state.starredIds.forEach(id => this.state.seenIds.add(id));
+          unseens = availablePool.filter(q => !this.state.seenIds.has(q.id));
+        }
 
         let selected = [];
 
-        // 復習（スター付き）から最大2問、新鮮な未出題から3問などバランス良く5問選定
-        if (starred.length > 0) {
-          const shuffledStarred = [...starred].sort(() => 0.5 - Math.random());
-          selected.push(...shuffledStarred.slice(0, Math.min(2, starred.length)));
-        }
+        // 未出題の中からランダムにシャッフルして5問抽出
+        const shuffled = [...unseens].sort(() => 0.5 - Math.random());
+        selected = shuffled.slice(0, 5);
 
-        // 残りを未出題プールから補給
-        const shuffledUnseen = [...unseens].sort(() => 0.5 - Math.random());
-        const needed = 5 - selected.length;
-        selected.push(...shuffledUnseen.slice(0, needed));
-
-        // それでも5問に満たない場合（全問一巡した場合など）、除外されていないプールから補完
+        // 万が一5問に満たない場合は全プールから補給
         if (selected.length < 5) {
-          const currentSelectedIds = new Set(selected.map(s => s.id));
-          const remainingCandidates = availablePool.filter(q => !currentSelectedIds.has(q.id));
-          const shuffledRest = [...remainingCandidates].sort(() => 0.5 - Math.random());
-          selected.push(...shuffledRest.slice(0, 5 - selected.length));
+          const pickedIds = new Set(selected.map(q => q.id));
+          const rest = availablePool.filter(q => !pickedIds.has(q.id)).sort(() => 0.5 - Math.random());
+          selected.push(...rest.slice(0, 5 - selected.length));
         }
 
-        // 出題リストを記録
         this.state.todayQuestionIds = selected.map(q => q.id);
-        selected.forEach(q => this.state.seenIds.add(q.id));
+
+        // ★重要解決：出題された5問は「今日の課題」として必ず未読（0/5）から開始させる
+        selected.forEach(q => {
+          this.state.seenIds.add(q.id);
+          this.state.readIds.delete(q.id); // 以前読んだ履歴があっても本日の課題として未読リセット
+        });
+
         this.saveState();
       }
 
       perform7AmTransition() {
-        // ★重要要件：「過去に出たものはスターがついていないものは二度と使わない」
-        // 前日の出題を評価：スターがついていないものは discardedIds に永久追加！
         const currentDailyIds = [...this.state.todayQuestionIds];
         
+        // スターがついていない昨日の問題は永久除外！
         currentDailyIds.forEach(id => {
           if (!this.state.starredIds.has(id)) {
             this.state.discardedIds.add(id);
           }
         });
 
-        // 日付キーを更新し、新しい5問を抽出
         this.state.lastSessionDateKey = this.get7AmDateKey();
-        this.initDailyQuestions();
+        this.initDailyQuestions(true);
+        this.saveState();
+      }
+
+      // ユーザーが能動的に「新しい未読5問を出題」を押した時の処理
+      forceServeFreshBatch() {
+        // 現在の5問のうち、スター未付与のものは除外プールに送る
+        this.state.todayQuestionIds.forEach(id => {
+          if (!this.state.starredIds.has(id)) {
+            this.state.discardedIds.add(id);
+          }
+        });
+        this.initDailyQuestions(true);
         this.saveState();
       }
 
@@ -651,7 +767,6 @@
           this.state.starredIds.delete(questionId);
         } else {
           this.state.starredIds.add(questionId);
-          // スターを付けたものは除外リストから保護
           this.state.discardedIds.delete(questionId);
         }
         this.saveState();
@@ -676,7 +791,6 @@
         }
       }
 
-      // デバッグ・体験用：強制的に翌朝7時を迎えたシミュレーション
       simulateNextDay() {
         this.perform7AmTransition();
       }
@@ -706,6 +820,7 @@
     const discardedQuestionsContainer = document.getElementById('discardedQuestionsContainer');
 
     const simNextDayBtn = document.getElementById('simNextDayBtn');
+    const getFreshQuestionsBtn = document.getElementById('getFreshQuestionsBtn');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
 
@@ -967,8 +1082,9 @@
       currentCycleLabelEl.textContent = `${dateKey} 07:00 〜 翌朝07:00 枠`;
       dailyDateDisplayEl.textContent = `${dateKey} 朝7:00付 出題`;
 
+      const allQuestions = app.getAllQuestions();
       const todayQuestions = app.state.todayQuestionIds
-        .map(id => app.questions.find(q => q.id === id))
+        .map(id => allQuestions.find(q => q.id === id))
         .filter(Boolean);
 
       const todayReadCount = todayQuestions.filter(q => app.state.readIds.has(q.id)).length;
@@ -984,7 +1100,7 @@
       if (todayQuestions.length === 0) {
         dailyQuestionsContainer.innerHTML = `
           <div class="p-8 text-center bg-white rounded-2xl border border-dashed border-slate-300 text-slate-500">
-            出題候補がすべて終了したか、準備中です。
+            出題候補がすべて終了したか、準備中です。「新しい5問を出題」を押してください。
           </div>
         `;
       } else {
@@ -993,9 +1109,9 @@
         });
       }
 
-      // 2. スター付き復習帳 レンダリング（確実に全スター論点を表示）
+      // 2. スター付き復習帳 レンダリング
       starredQuestionsContainer.innerHTML = '';
-      const starredList = app.questions.filter(q => app.state.starredIds.has(q.id));
+      const starredList = allQuestions.filter(q => app.state.starredIds.has(q.id));
       if (starredList.length === 0) {
         starredQuestionsContainer.innerHTML = `
           <div class="p-12 text-center bg-white rounded-2xl border border-slate-200 text-slate-400 space-y-2">
@@ -1014,7 +1130,7 @@
 
       // 3. 除外済み履歴 レンダリング
       discardedQuestionsContainer.innerHTML = '';
-      const discardedList = app.questions.filter(q => app.state.discardedIds.has(q.id));
+      const discardedList = allQuestions.filter(q => app.state.discardedIds.has(q.id));
       if (discardedList.length === 0) {
         discardedQuestionsContainer.innerHTML = `
           <div class="p-8 text-center bg-white rounded-2xl border border-slate-200 text-slate-400 text-xs">
@@ -1038,9 +1154,94 @@
       }
     }
 
+    // 新しい5問を即時出題するリスナー
+    getFreshQuestionsBtn.addEventListener('click', async () => {
+      getFreshQuestionsBtn.disabled = true;
+      const originalText = getFreshQuestionsBtn.innerHTML;
+      getFreshQuestionsBtn.innerHTML = `
+        <svg class="w-3.5 h-3.5 animate-spin text-white shrink-0" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+        <span class="whitespace-nowrap">抽出中...</span>
+      `;
+
+      try {
+        // 未出題ストックをチェック
+        const allQuestions = app.getAllQuestions();
+        const unseens = allQuestions.filter(q => !app.state.seenIds.has(q.id) && !app.state.discardedIds.has(q.id));
+
+        // もし未出題が残り少ない場合はGemini APIで5問生成してストック拡充を試みる
+        if (unseens.length < 5) {
+          try {
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const prompt = "医療経営士2級の試験範囲（病院財務、診療報酬改定、医療安全、医療法、組織労務、医療DX等）から、実務・本試験レベルの重要論点を5問作成してください。";
+            
+            const payload = {
+              contents: [{ parts: [{ text: prompt }] }],
+              systemInstruction: {
+                parts: [{ text: "医療経営士2級試験の作問官として、実践的かつ重要な出題論点を5つ作成し、指定JSON形式で出力してください。" }]
+              },
+              generationConfig: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                  type: "ARRAY",
+                  items: {
+                    type: "OBJECT",
+                    properties: {
+                      "category": { "type": "STRING" },
+                      "title": { "type": "STRING" },
+                      "question": { "type": "STRING" },
+                      "keyPoint": { "type": "STRING" },
+                      "explanation": { "type": "STRING" },
+                      "examTrap": { "type": "STRING" }
+                    },
+                    "required": ["category", "title", "question", "keyPoint", "explanation", "examTrap"]
+                  }
+                }
+              }
+            };
+
+            const res = await fetch(apiUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+              const data = await res.json();
+              const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (text) {
+                const parsed = JSON.parse(text);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                  parsed.forEach((item, idx) => {
+                    app.state.customQuestions.push({
+                      id: `ai-${Date.now()}-${idx}`,
+                      ...item
+                    });
+                  });
+                }
+              }
+            }
+          } catch (e) {
+            console.warn("AI generation fallback to offline bank", e);
+          }
+        }
+
+        app.forceServeFreshBatch();
+        renderAll();
+        showToast("✨ 新しい未読の5問を出題しました！");
+      } finally {
+        getFreshQuestionsBtn.disabled = false;
+        getFreshQuestionsBtn.innerHTML = originalText;
+      }
+    });
+
     function openDetailModal(qId) {
       activeModalQuestionId = qId;
-      const q = app.questions.find(item => item.id === qId);
+      const allQuestions = app.getAllQuestions();
+      const q = allQuestions.find(item => item.id === qId);
       if (!q) return;
 
       modalCategoryBadge.textContent = q.category;
